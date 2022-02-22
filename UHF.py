@@ -2,8 +2,6 @@ import numpy as np
 
 import util
 
-Vector = list[complex]
-
 
 class UHF:
     """
@@ -17,7 +15,7 @@ class UHF:
         self.a = np.random.randint(1, util.P)
         self.b = np.random.randint(0, util.P)
 
-    def hash_clx(self, c: complex) -> int:
+    def _hash_clx(self, c: complex) -> int:
         """
         Identical hash codes for equals numbers.
         Return hash code for a complex number
@@ -25,9 +23,9 @@ class UHF:
         k = c.__hash__()
         return (self.a * k + self.b) % util.P % self.m
 
-    def hash_vct(self, v: Vector) -> int:
+    def hash_vct(self, v: np.array) -> int:
         k = 0
         for clx in v:
-            k = k * 31 + self.hash_clx(clx)
+            k = k * 31 + self._hash_clx(clx)
         return (self.a * k + self.b) % util.P % self.m
 

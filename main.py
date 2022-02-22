@@ -1,6 +1,5 @@
 import UHF
+import util
 
-v1 = list([complex(real=1, imag=3)])
-v2 = list([complex(real=1, imag=3)])
-u = UHF.UHF(100)
-print(u.hash_vct(v1) == u.hash_vct(v2))
+for l in util.rand_data(70):
+    print(l)
